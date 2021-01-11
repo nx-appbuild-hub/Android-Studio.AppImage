@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
-SOURCE="https://dl.google.com/dl/android/studio/ide-zips/3.5.2.0/android-studio-ide-191.5977832-linux.tar.gz"
+SOURCE="https://redirector.gvt1.com/edgedl/android/studio/ide-zips/4.2.0.19/android-studio-ide-202.7033425-linux.tar.gz"
 DESTINATION="build.tar.gz"
 OUTPUT="Android-Studio.AppImage"
 
