@@ -14,26 +14,24 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
-SOURCE="https://redirector.gvt1.com/edgedl/android/studio/ide-zips/4.1.1.0/android-studio-ide-201.6953283-linux.tar.gz"
-DESTINATION="build.tar.gz"
-OUTPUT="Android-Studio.AppImage"
 
 
-all:
-	echo "Building: $(OUTPUT)"
-	wget -O $(DESTINATION)  $(SOURCE)
+all: 
+	mkdir --parents $(PWD)/build/Boilerplate.AppDir
+	wget --output-document="$(PWD)/build/build.tar.gz" "https://redirector.gvt1.com/edgedl/android/studio/ide-zips/4.2.2.0/android-studio-ide-202.7486908-linux.tar.gz"
 
-	tar -zxvf $(DESTINATION)
-	rm -rf AppDir/opt
+	mkdir --parents $(PWD)/build/Boilerplate.AppDir/opt/android-studio
+	tar -zxvf $(PWD)/build/build.tar.gz	 --directory=$(PWD)/build/Boilerplate.AppDir/opt/android-studio
+	mv --force $(PWD)/build/Boilerplate.AppDir/opt/android-studio*/android-studio*/* $(PWD)/build/Boilerplate.AppDir/opt/android-studio/
+	rm --force --recursive $(PWD)/build/Boilerplate.AppDir/opt/android-studio*/android-studio*
 
-	mkdir --parents AppDir/opt/application
-	mv android-studio/* AppDir/opt/application
+	cp --force $(PWD)/AppDir/*.svg          $(PWD)/build/Boilerplate.AppDir                         || true
+	cp --force $(PWD)/AppDir/*.png          $(PWD)/build/Boilerplate.AppDir                         || true
+	cp --force $(PWD)/AppDir/*.desktop      $(PWD)/build/Boilerplate.AppDir                         || true
+	cp --force $(PWD)/AppDir/AppRun         $(PWD)/build/Boilerplate.AppDir                         || true
 
-	chmod +x AppDir/AppRun
-	export ARCH=x86_64 && bin/appimagetool.AppImage AppDir $(OUTPUT)
+	export ARCH=x86_64 && $(PWD)/bin/appimagetool.AppImage $(PWD)/build/Boilerplate.AppDir $(PWD)/Android-Studio.AppImage
+	chmod +x $(PWD)/Android-Studio.AppImage
 
-	chmod +x $(OUTPUT)
-
-	rm -rf android-studio
-	rm -f $(DESTINATION)
-	rm -rf AppDir/opt
+clean:
+	rm -rf $(PWD)/build
