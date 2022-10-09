@@ -18,7 +18,7 @@
 
 all: 
 	mkdir --parents $(PWD)/build/Boilerplate.AppDir
-	wget --output-document="$(PWD)/build/build.tar.gz" "https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2021.2.1.15/android-studio-2021.2.1.15-linux.tar.gz"
+	wget --output-document="$(PWD)/build/build.tar.gz" "https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2021.3.1.16/android-studio-2021.3.1.16-linux.tar.gz"
 
 	mkdir --parents $(PWD)/build/Boilerplate.AppDir/opt/android-studio
 	tar -zxvf $(PWD)/build/build.tar.gz	 --directory=$(PWD)/build/Boilerplate.AppDir/opt/android-studio
